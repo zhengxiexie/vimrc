@@ -65,6 +65,7 @@ if(!g:iswindows)
 endif
 
 filetype plugin indent on  
+filetype plugin on  
 
 Bundle 'gmarik/vundle'  
 Bundle 'https://github.com/vim-scripts/The-NERD-Commenter.git'
@@ -89,6 +90,8 @@ Bundle 'https://github.com/tpope/vim-surround.git'
 Bundle 'https://github.com/vim-scripts/CmdlineComplete.git'
 Bundle 'https://github.com/plasticboy/vim-markdown.git'
 "Bundle 'https://github.com/Valloric/YouCompleteMe.git'
+Bundle 'https://github.com/zachwill/github.vim.git'
+Bundle 'https://github.com/tomasr/molokai.git'
 
 filetype plugin indent on     " required!   
 
@@ -124,12 +127,16 @@ endif
 
 syntax enable
 syntax on
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 
 "colorscheme torte
-colorscheme jellybeans
+"colorscheme jellybeans
+colorscheme molokai
+"colorscheme	GitHub
 "colorscheme	solarized
+let g:molokai_original = 1
+let g:rehash256 = 1
 
 if(has("win32") || has("win95") || has("win64") || has("win16"))
 	    let g:iswindows=1
@@ -302,7 +309,7 @@ function Do_CsTag()
     endif
     if(executable('ctags'))
         "silent! execute "!ctags -R --c-types=+p --fields=+S *"
-        silent! execute "!ctags -R --c++-kinds=+p --c-types=+p --fields=+iaS --extra=+q ."
+        silent! execute "!ctags -R -I --c++-kinds=+p --c-types=+p --fields=+iaS --extra=+q ."
     endif
     if(executable('cscope') && has("cscope") )
         if(g:iswindows!=1)
@@ -408,9 +415,20 @@ nnoremap <silent> <S-F2> :VbookmarkPrevious<CR>
 "--------------------------------------------------------------------------------
 " 自动补全配置
 "--------------------------------------------------------------------------------
-set completeopt=menu
+set nomodeline
+"set tags+= ~/stl.tags
+"let OmniCpp_DefaultNamespaces   = ["std", "_GLIBCXX_STD"]
+set completeopt=preview
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+set nocp
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_DisplayMode = 1
+let OmniCpp_ShowScopeInAbbr = 0
+let OmniCpp_ShowPrototypeInAbbr = 0
+let OmniCpp_ShowAccess = 1
+let OmniCpp_SelectFirstItem = 2
 
 "--------------------------------------------------------------------------------
 " EasyGrep 设置
