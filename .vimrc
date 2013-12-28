@@ -92,6 +92,7 @@ Bundle 'https://github.com/plasticboy/vim-markdown.git'
 "Bundle 'https://github.com/Valloric/YouCompleteMe.git'
 Bundle 'https://github.com/zachwill/github.vim.git'
 Bundle 'https://github.com/tomasr/molokai.git'
+Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
 
 filetype plugin indent on     " required!   
 
@@ -127,14 +128,13 @@ endif
 
 syntax enable
 syntax on
-set background=dark
-"set background=light
+"set background=dark
+set background=light
 
 "colorscheme torte
 "colorscheme jellybeans
 colorscheme molokai
 "colorscheme	GitHub
-"colorscheme	solarized
 let g:molokai_original = 1
 let g:rehash256 = 1
 
