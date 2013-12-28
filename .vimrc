@@ -438,3 +438,8 @@ let g:EasyGrepCommand = 1
 let g:EasyGrepAllOptionsInExplorer = 1
 let g:EasyGrepWindow = 1
 let g:EasyGrepFilesToExclude = "*.idl.h,*.idl.cpp,*.out,*.o"
+
+"--------------------------------------------------------------------------------
+" easymotion设置
+"--------------------------------------------------------------------------------
+let g:EasyMotion_leader_key = '<Leader>'
