@@ -105,6 +105,7 @@ set fenc=utf-8
 set autoindent
 set hidden
 set encoding=utf-8
+set tw=100 fo+=Mm
 
 
 " 显示/隐藏菜单栏、工具栏、滚动条，可用 Ctrl + F11 切换
