@@ -19,8 +19,11 @@ endif
 
 set nocompatible
 if(g:iswindows==1) 
-	source $VIMRUNTIME/vimrc_example.vim
-	source $VIMRUNTIME/mswin.vim
+	"source $VIMRUNTIME/vimrc_example.vim
+	source $VIMRUNTIME/menu.vim
+	"source $VIMRUNTIME/mswin.vim
+	source $VIMRUNTIME/delmenu.vim
+	language messages zh_CN.utf-8
 	behave mswin
 
 	set diffexpr=MyDiff()
@@ -93,13 +96,15 @@ Bundle 'https://github.com/plasticboy/vim-markdown.git'
 Bundle 'https://github.com/zachwill/github.vim.git'
 Bundle 'https://github.com/tomasr/molokai.git'
 Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
+Bundle 'https://github.com/dsolstad/vim-wombat256i.git'
+"Bundle 'https://github.com/josephwecker/murphytango.vim.git'
 
 filetype plugin indent on     " required!   
 
 set nocompatible          "不要兼容vi
 filetype off              "必须的设置：
 
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencodings=ucs-bom,utf-8,chinese,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set scrolloff=3
 set fenc=utf-8
 set autoindent
@@ -135,6 +140,7 @@ set background=light
 "colorscheme torte
 "colorscheme jellybeans
 colorscheme molokai
+"colorscheme wombat256i
 "colorscheme	GitHub
 let g:molokai_original = 1
 let g:rehash256 = 1
@@ -225,15 +231,15 @@ if(!g:iswindows)
 	nnoremap <leader>s :source ~/.vimrc<CR>
 endif
 
-nmap 1 1gt
-nmap 2 2gt
-nmap 3 3gt
-nmap 4 4gt
-nmap 5 5gt
-nmap 6 6gt
-nmap 7 7gt
-nmap 8 8gt
-nmap 9 9gt
+nmap <leader>1 1gt
+nmap <leader>2 2gt
+nmap <leader>3 3gt
+nmap <leader>4 4gt
+nmap <leader>5 5gt
+nmap <leader>6 6gt
+nmap <leader>7 7gt
+nmap <leader>8 8gt
+nmap <leader>9 9gt
 
 "--------------------------------------------------------------------------------
 " 代码折叠
@@ -395,7 +401,7 @@ nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>f :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>i :cs find i ^<C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>i :cs find i <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 "--------------------------------------------------------------------------------
@@ -453,7 +459,7 @@ let g:EasyGrepMode = 2
 let g:EasyGrepCommand = 1
 let g:EasyGrepAllOptionsInExplorer = 1
 let g:EasyGrepWindow = 1
-let g:EasyGrepFilesToExclude = "*.idl.h,*.idl.cpp,*.out,*.o"
+"let g:EasyGrepFilesToExclude = "*.idl.h,*.idl.cpp,*.out,*.o"
 
 "--------------------------------------------------------------------------------
 " easymotion设置
