@@ -98,6 +98,7 @@ Bundle 'https://github.com/tomasr/molokai.git'
 Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
 Bundle 'https://github.com/dsolstad/vim-wombat256i.git'
 "Bundle 'https://github.com/josephwecker/murphytango.vim.git'
+Bundle 'https://github.com/kien/rainbow_parentheses.vim.git'
 
 filetype plugin indent on     " required!   
 
@@ -465,3 +466,32 @@ let g:EasyGrepWindow = 1
 " easymotion设置
 "--------------------------------------------------------------------------------
 let g:EasyMotion_leader_key = '<Leader>'
+
+"--------------------------------------------------------------------------------
+" rainbow设置
+"--------------------------------------------------------------------------------
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+	\ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
