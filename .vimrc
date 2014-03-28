@@ -89,13 +89,15 @@ Bundle 'https://github.com/tpope/vim-repeat.git'
 Bundle 'https://github.com/tpope/vim-surround.git'
 Bundle 'https://github.com/vim-scripts/CmdlineComplete.git'
 Bundle 'https://github.com/plasticboy/vim-markdown.git'
-Bundle 'https://github.com/Valloric/YouCompleteMe.git'
+"Bundle 'https://github.com/Valloric/YouCompleteMe.git'
 Bundle 'https://github.com/zachwill/github.vim.git'
 Bundle 'https://github.com/tomasr/molokai.git'
 Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
-"Bundle 'https://github.com/vim-scripts/adobe.vim.git'
-Bundle 'https://github.com/PotHix/Vimpress.git'
-Bundle 'https://github.com/pydave/vim-man.git'
+Bundle 'https://github.com/endel/vim-github-colorscheme.git'
+Bundle 'https://github.com/morhetz/gruvbox.git'
+Bundle 'https://github.com/zeis/vim-kolor.git'
+Bundle 'https://github.com/altercation/vim-colors-solarized.git'
+Bundle 'https://github.com/Lokaltog/vim-distinguished.git'
 
 filetype plugin indent on     " required!   
 
@@ -132,16 +134,18 @@ endif
 
 syntax enable
 syntax on
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 
 "colorscheme torte
 "colorscheme jellybeans
-colorscheme molokai
+"colorscheme molokai
+"colorscheme github
+colorscheme	gruvbox
+"colorscheme	kolor
 "colorscheme	GitHub
-"colorscheme solarized
-"let g:molokai_original = 1
-"let g:rehash256 = 1
+let g:molokai_original = 1
+let g:rehash256 = 1
 
 if(has("win32") || has("win95") || has("win64") || has("win16"))
 	    let g:iswindows=1
@@ -463,14 +467,3 @@ let g:EasyGrepFilesToExclude = "*.idl.h,*.idl.cpp,*.out,*.o"
 " easymotion设置
 "--------------------------------------------------------------------------------
 let g:EasyMotion_leader_key = '<Leader>'
-
-" YouCompleteMe
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-"Do not ask when starting vim
-let g:ycm_confirm_extra_conf = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:ycm_key_invoke_completion ='<C-U>'
-
-
