@@ -18,9 +18,12 @@ else
 endif
 
 set nocompatible
-if(g:iswindows==1) 
-	source $VIMRUNTIME/vimrc_example.vim
-	source $VIMRUNTIME/mswin.vim
+if(g:iswindows==1)
+	"source $VIMRUNTIME/vimrc_example.vim
+	source $VIMRUNTIME/menu.vim
+	"source $VIMRUNTIME/mswin.vim
+	source $VIMRUNTIME/delmenu.vim
+	language messages zh_CN.utf-8
 	behave mswin
 
 	set diffexpr=MyDiff()
@@ -52,22 +55,22 @@ endif
 behave mswin
 
 
-filetype off  
+filetype off
 
-if(g:iswindows==1) 
-	set rtp+=$VIM/vimfiles/bundle/vundle/  
-	call vundle#rc('$VIM/vimfiles/bundle/')  
+if(g:iswindows==1)
+	set rtp+=$VIM/vimfiles/bundle/vundle/
+	call vundle#rc('$VIM/vimfiles/bundle/')
 endif
 
-if(!g:iswindows) 
-	set rtp+=~/.vim/bundle/vundle/  
-	call vundle#rc('~/.vim/bundle/')  
+if(!g:iswindows)
+	set rtp+=~/.vim/bundle/vundle/
+	call vundle#rc('~/.vim/bundle/')
 endif
 
-filetype plugin indent on  
-filetype plugin on  
+filetype plugin indent on
+filetype plugin on
 
-Bundle 'gmarik/vundle'  
+Bundle 'gmarik/vundle'
 Bundle 'https://github.com/vim-scripts/The-NERD-Commenter.git'
 Bundle 'https://github.com/vim-scripts/ctrlp.vim.git'
 Bundle 'https://github.com/vim-scripts/a.vim.git'
@@ -93,18 +96,26 @@ Bundle 'https://github.com/plasticboy/vim-markdown.git'
 Bundle 'https://github.com/zachwill/github.vim.git'
 Bundle 'https://github.com/tomasr/molokai.git'
 Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
+Bundle 'https://github.com/dsolstad/vim-wombat256i.git'
+Bundle 'https://github.com/kien/rainbow_parentheses.vim.git'
+Bundle 'https://github.com/bronson/vim-trailing-whitespace.git'
+Bundle 'https://github.com/vim-scripts/adobe.vim.git'
+Bundle 'https://github.com/jpo/vim-railscasts-theme.git'
 Bundle 'https://github.com/endel/vim-github-colorscheme.git'
 Bundle 'https://github.com/morhetz/gruvbox.git'
 Bundle 'https://github.com/zeis/vim-kolor.git'
 Bundle 'https://github.com/altercation/vim-colors-solarized.git'
 Bundle 'https://github.com/Lokaltog/vim-distinguished.git'
+Bundle 'https://github.com/29decibel/codeschool-vim-theme.git'
+Bundle 'https://github.com/pydave/vim-man.git'
+"Bundle 'https://github.com/PotHix/Vimpress.git'
 
-filetype plugin indent on     " required!   
+filetype plugin indent on     " required!
 
 set nocompatible          "不要兼容vi
 filetype off              "必须的设置：
 
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencodings=ucs-bom,utf-8,chinese,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set scrolloff=3
 set fenc=utf-8
 set autoindent
@@ -134,8 +145,8 @@ endif
 
 syntax enable
 syntax on
-set background=dark
-"set background=light
+"set background=dark
+set background=light
 
 "colorscheme torte
 "colorscheme jellybeans
@@ -213,11 +224,11 @@ set ai!             " 设置自动缩进
 let mapleader=","  "leader
 nmap <Space> <PageDown>
 nmap <leader><Space> <PageUp>
-nmap wv <C-w>v 
+nmap wv <C-w>v
 nmap wc <C-w>c
 nmap ws <C-w>s
 nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j 
+nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nmap <F12> :A<CR>
@@ -226,22 +237,22 @@ nnoremap <leader>a :res +50<CR>
 nnoremap <leader>b :res -50<CR>
 nnoremap <leader>c :vertical res +80<CR>
 nnoremap <leader>d :vertical res -80<CR>
-if(g:iswindows==1) 
+if(g:iswindows==1)
 	nnoremap <leader>s :source $VIM/_vimrc<CR>
 endif
 if(!g:iswindows)
 	nnoremap <leader>s :source ~/.vimrc<CR>
 endif
 
-nmap 1 1gt
-nmap 2 2gt
-nmap 3 3gt
-nmap 4 4gt
-nmap 5 5gt
-nmap 6 6gt
-nmap 7 7gt
-nmap 8 8gt
-nmap 9 9gt
+nmap <leader>1 1gt
+nmap <leader>2 2gt
+nmap <leader>3 3gt
+nmap <leader>4 4gt
+nmap <leader>5 5gt
+nmap <leader>6 6gt
+nmap <leader>7 7gt
+nmap <leader>8 8gt
+nmap <leader>9 9gt
 
 "--------------------------------------------------------------------------------
 " 代码折叠
@@ -278,7 +289,7 @@ nnoremap <leader>t :CtrlPBuffer<CR>
 "let g:ctrlp_mruf_save_on_update = 1
 
 "--------------------------------------------------------------------------------
-" Tagbar 
+" Tagbar
 "--------------------------------------------------------------------------------
 let g:tagbar_ctags_bin = 'ctags'
 let g:tagbar_width = 30
@@ -403,15 +414,15 @@ nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>f :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>i :cs find i ^<C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>i :cs find i <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 "--------------------------------------------------------------------------------
 "" powerline相关设置
 "--------------------------------------------------------------------------------
-set nocompatible 
+set nocompatible
 set laststatus=2   " Always show the statusline
-let g:Powerline_cache_enabled = 1 
+let g:Powerline_cache_enabled = 1
 let g:Powerline_dividers_override = ['>>', '>', '<<', '<']
 let g:Powerline_stl_path_style = 'full'
 let g:Powerline_symbols = 'fancy'
@@ -467,3 +478,32 @@ let g:EasyGrepFilesToExclude = "*.idl.h,*.idl.cpp,*.out,*.o"
 " easymotion设置
 "--------------------------------------------------------------------------------
 let g:EasyMotion_leader_key = '<Leader>'
+
+"--------------------------------------------------------------------------------
+" rainbow设置
+"--------------------------------------------------------------------------------
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+	\ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
